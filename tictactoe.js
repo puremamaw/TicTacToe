@@ -28,7 +28,6 @@ var music;
 var soundOne;
 var soundTwo;
 
-
 document.onreadystatechange = function () {
     if (document.readyState == "complete") {
         initialize();
@@ -113,19 +112,19 @@ function gameWinner() {
 }
 
 function playerTurn() {
-    if (whoseTurn == 0)
+    if (whoseTurn == 0) {
         whoseTurn = 1;
-    else
+        playerDisplay.style.color = "#a272e0";      
+    }   
+    else {
         whoseTurn = 0;
-
-    if(players[whoseTurn] == "Sharingan")
-        playerDisplay.style.color = "red";
-    else if(players[whoseTurn] == "Rinnegan")
-        playerDisplay.style.color = "#a272e0";
-
+        playerDisplay.style.color = "red";  
+    }
+       
     playerDisplay.innerText = players[whoseTurn] + "'s  Turn";
 }
 
+//table clear not working
 function onButtonResetGame() {
     whoseTurn = 0;
     playerDisplay.innerText = "";
@@ -133,9 +132,8 @@ function onButtonResetGame() {
     soundTwo.pause();
     title.innerText = "Tic Tac Toe";
 
-    //bug
     for (var x = 0; x < column.length; x++) {
-        column[x].innerText = "";
+        column[x].innerText ="";
     }
 }
 
