@@ -68,6 +68,7 @@ function onButtonGameStart() {
     startGame.onclick = function () {
         music.play();
         title.innerText = "Game Started";
+        playerDisplay.style.color = "red";
         playerDisplay.innerText = players[whoseTurn] + "'s  Turn";
         for (var x = 0; x < column.length; x++) {
             column[x].onclick = onFieldClicked;
@@ -116,6 +117,12 @@ function playerTurn() {
         whoseTurn = 1;
     else
         whoseTurn = 0;
+
+    if(players[whoseTurn] == "Sharingan")
+        playerDisplay.style.color = "red";
+    else if(players[whoseTurn] == "Rinnegan")
+        playerDisplay.style.color = "#a272e0";
+
     playerDisplay.innerText = players[whoseTurn] + "'s  Turn";
 }
 
