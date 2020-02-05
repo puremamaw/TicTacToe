@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tic Tac Toe</title>
+        <script type="text/javascript" src="tictactoe.js"></script>
+        <link rel="stylesheet" href="index.css" />
+    </head>
+    <body draggable="false">  
+        <div id="container">
+            <div id="title-name">
+                <span id="tictactoe-title">TicTacToe</span>
+            </div>
+            <table id="game-area">
+                <tr class="row">
+                  <td id="1"></td>
+                  <td id="2"></td>
+                  <td id="4"></td>
+                </tr>
+                <tr class="row">
+                  <td id="8"></td>
+                  <td id="16"></td>
+                  <td id="32"></td>
+                </tr>
+                <tr class="row">
+                  <td id="64"></td>
+                  <td id="128"></td>
+                  <td id="256"></td>
+                </tr>
+              </table>    
+        </div>
+        <div class="utility-buttons">
+            <button id="start-game">Start Game</button>
+            <button id="reset-game">Reset Game</button>
+            <p id="player-name"></p>  
+        </div>
+        <audio id= cheer>
+          <source src="audio/cheer.mp3" type="audio/mpeg">
+        </audio>
+        <audio id=background-music>
+          <source src="audio/fightscene.mp3" type="audio/mpeg">
+        </audio>  
+    </body>
+</html>
