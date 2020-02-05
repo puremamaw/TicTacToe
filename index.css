@@ -3,7 +3,7 @@
     height: 530px;
     border: 2px solid white;
     margin-left: calc(50% - 380px / 2);
-    margin-top: calc(38vh - 500px / 2);  
+    margin-top: calc(38vh - 500px / 2);
 }
 
 #title-name {
@@ -32,7 +32,9 @@ td{
 }
 
 td:hover{
-    background-color: gray;
+    background-color: rgb(253, 143, 0);
+    background-image: url("pictures/naruto.png");
+    background-size: calc(380px / 3) calc((500px - 59.45px) / 3);
 }
 
 #cross {

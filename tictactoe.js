@@ -24,9 +24,10 @@ var winValues = [
     448
 ];
 var gameOver = false;
-var audioCheer;
 var music;
- 
+var soundOne;
+var soundTwo;
+
 
 document.onreadystatechange = function () {
     if (document.readyState == "complete") {
@@ -47,8 +48,9 @@ function queryAllElements() {
     playerDisplay = document.querySelector("#player-name");
     resetGame = document.querySelector('#reset-game');
     title = document.querySelector('#tictactoe-title');
-    audioCheer = document.querySelector('#cheer');
     music = document.querySelector('#background-music');
+    soundOne = document.querySelector('#ms');
+    soundTwo = document.querySelector('#st');
 }
 function attachEventHandlers() {
     onButtonGameStart();
@@ -57,12 +59,12 @@ function attachEventHandlers() {
 
 function onButtonGameStart() {
 
-    if(!startGame.onclick) {
+    if (!startGame.onclick) {
         for (var x = 0; x < column.length; x++) {
             column[x].onclick = hasntClickedGameStart;
         }
     }
-        
+
     startGame.onclick = function () {
         music.play();
         title.innerText = "Game Started";
@@ -73,7 +75,7 @@ function onButtonGameStart() {
     }
 }
 
-function hasntClickedGameStart () {
+function hasntClickedGameStart() {
     alert("Please Press Start Game");
 }
 
@@ -81,7 +83,7 @@ function onFieldClicked(e) {
     if (!gameOver) {
         e.target.innerHTML = markers[whoseTurn];
         var currentScore = parseInt(e.target.id);
-        if(Number.isNaN(currentScore))
+        if (Number.isNaN(currentScore))
             return;
         scores[whoseTurn] += currentScore;
         gameWinner();
@@ -94,7 +96,12 @@ function gameWinner() {
     for (var x = 0; x < winValues.length; x++) {
         if ((scores[whoseTurn] & winValues[x]) == winValues[x]) {
             alert(players[whoseTurn] + " Wins!");
-            audioCheer.play();        
+
+            if (players[whoseTurn] == "Sharingan") {
+                soundOne.play();
+            } else
+                soundTwo.play();
+
             gameOver = true;
         }
     }
@@ -115,9 +122,11 @@ function playerTurn() {
 function onButtonResetGame() {
     whoseTurn = 0;
     playerDisplay.innerText = "";
-    audioCheer.pause();
+    soundOne.pause();
+    soundTwo.pause();
     title.innerText = "Tic Tac Toe";
 
+    //bug
     for (var x = 0; x < column.length; x++) {
         column[x].innerText = "";
     }
