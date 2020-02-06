@@ -27,6 +27,7 @@ var gameOver = false;
 var music;
 var soundOne;
 var soundTwo;
+var test;
 
 document.onreadystatechange = function () {
     if (document.readyState == "complete") {
@@ -50,6 +51,7 @@ function queryAllElements() {
     music = document.querySelector('#background-music');
     soundOne = document.querySelector('#ms');
     soundTwo = document.querySelector('#st');
+    test = document.querySelectorAll('.column');
 }
 function attachEventHandlers() {
     onButtonGameStart();
@@ -83,6 +85,7 @@ function onFieldClicked(e) {
     if (!gameOver) {
         e.target.innerHTML = markers[whoseTurn];
         var currentScore = parseInt(e.target.id);
+        
         if (Number.isNaN(currentScore))
             return;
         scores[whoseTurn] += currentScore;
@@ -96,15 +99,15 @@ function gameWinner() {
     for (var x = 0; x < winValues.length; x++) {
         if ((scores[whoseTurn] & winValues[x]) == winValues[x]) {
             alert(players[whoseTurn] + " Wins!");
-
+            
             if (players[whoseTurn] == "Sharingan") {
                 soundOne.play();
             } else
                 soundTwo.play();
-
             gameOver = true;
         }
     }
+
     if (((scores[0] + scores[1]) == 511) && !gameOver) {
         alert("Its a Tie!");
         gameOver = true;
@@ -124,7 +127,6 @@ function playerTurn() {
     playerDisplay.innerText = players[whoseTurn] + "'s  Turn";
 }
 
-//table clear not working
 function onButtonResetGame() {
     whoseTurn = 0;
     playerDisplay.innerText = "";
@@ -132,8 +134,13 @@ function onButtonResetGame() {
     soundTwo.pause();
     title.innerText = "Tic Tac Toe";
 
-    for (var x = 0; x < column.length; x++) {
-        column[x].innerText ="";
+    scores = [0,0];
+
+    if(gameOver)
+        gameOver = false;
+
+    for (var x = 0; x < test.length; x++) {
+        test[x].innerHTML = "";
     }
 }
 
