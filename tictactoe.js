@@ -67,6 +67,7 @@ function onButtonGameStart() {
     }
 
     startGame.onclick = function () {
+        onButtonResetGame();
         music.play();
         title.innerText = "Game Started";
         playerDisplay.style.color = "red";
