@@ -98,6 +98,7 @@ function onFieldClicked(e) {
 function gameWinner() {
     for (var x = 0; x < winValues.length; x++) {
         if ((scores[whoseTurn] & winValues[x]) == winValues[x]) {
+            title.innerText = "Game Ended";
             alert(players[whoseTurn] + " Wins!");
             
             if (players[whoseTurn] == "Sharingan") {
